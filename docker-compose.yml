@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  mongo:
+    # https://hub.docker.com/_/mongo
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-storage:/etc/mongo
+
+volumes:
+  mongo-storage:
