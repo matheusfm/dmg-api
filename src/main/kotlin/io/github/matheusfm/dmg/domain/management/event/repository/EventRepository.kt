@@ -14,7 +14,7 @@ import java.time.LocalDate
 @RepositoryRestResource
 interface EventRepository : PagingAndSortingRepository<Event, String> {
 
-    @RestResource(path = "report")
+    @RestResource(path = "byCattlemanBetweenPageable")
     @Query(value = "{ 'cattleman.cattlemanId' : ?0, 'date' : { \$gte : ?1 , \$lte : ?2 } }")
     fun findByCattlemanAndDate(
         cattlemanId: String?,
@@ -22,6 +22,26 @@ interface EventRepository : PagingAndSortingRepository<Event, String> {
         @DateTimeFormat(iso = DATE) dateTo: LocalDate?,
         pageable: Pageable
     ): Page<Event>
+
+    @RestResource(path = "byCattlemanBetween")
+    @Query(value = "{ 'cattleman.cattlemanId' : ?0, 'date' : { \$gte : ?1 , \$lte : ?2 } }", sort = "{ date : 1 }")
+    fun findByCattlemanAndDate(
+        cattlemanId: String?,
+        @DateTimeFormat(iso = DATE) dateFrom: LocalDate?,
+        @DateTimeFormat(iso = DATE) dateTo: LocalDate?
+    ): Iterable<Event>
+
+    @RestResource(path = "byCattleman")
+    @Query(value = "{ 'cattleman.cattlemanId' : ?0 }", sort = "{ date : 1 }")
+    fun findByCattleman(cattlemanId: String?): Iterable<Event>
+
+    @RestResource(path = "byCattlemanPageable")
+    @Query(value = "{ 'cattleman.cattlemanId' : ?0 }")
+    fun findByCattlemanPageable(cattlemanId: String?, pageable: Pageable): Page<Event>
+
+    @RestResource(exported = false)
+    @Query(value = "{ 'cattleman.cattlemanId' : ?0, 'date' : { \$lte: ?1 } }", sort = "{ date : 1 }")
+    fun findByCattlemanBefore(cattlemanId: String?, localDate: LocalDate?): Iterable<Event>
 
     @RestResource(exported = false)
     override fun <S : Event?> save(entity: S): S

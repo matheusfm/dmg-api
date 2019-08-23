@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Pattern
 
-@Document(collection = "suppliers")
+@Document(collection = "suppliers", language = "portuguese")
 data class Supplier(
     @field:Id val id: String?,
     @field:TextIndexed @field:NotBlank val name: String?,

@@ -1,5 +1,6 @@
 package io.github.matheusfm.dmg.domain.management.event
 
+import io.github.matheusfm.dmg.domain.management.event.resource.EventRequest
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -9,9 +10,9 @@ class EventRequestTest {
         val eventRequest = EventRequest(
             eventType = EventType.BIRTH,
             cattle = mapOf(
-                CattleType.BA to 10,
-                CattleType.B to 1,
-                CattleType.BO to 10
+                CattleType.BZA to 10,
+                CattleType.BOI to 1,
+                CattleType.BZO to 10
             ),
             cattlemanId = null,
             date = null,
@@ -25,6 +26,6 @@ class EventRequestTest {
 
         assertFalse(eventRequest.isCattleValid())
         assertTrue(violations.isNotEmpty())
-        assertEquals(CattleType.B, violations.first())
+        assertEquals(CattleType.BOI, violations.first())
     }
 }

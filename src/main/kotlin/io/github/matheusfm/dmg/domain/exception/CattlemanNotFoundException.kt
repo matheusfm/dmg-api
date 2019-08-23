@@ -1,4 +1,4 @@
-package io.github.matheusfm.dmg.domain.management.event.exception
+package io.github.matheusfm.dmg.domain.exception
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ResponseStatus
