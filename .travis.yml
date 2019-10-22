@@ -1,0 +1,10 @@
+language: java
+jdk: openjdk8
+
+script:
+  - ./mvnw clean package -B
+
+deploy:
+  provider: heroku
+  api_key: $HEROKU_APIKEY
+  app: dmg-api

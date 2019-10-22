@@ -9,6 +9,7 @@ import java.time.LocalDate
 import javax.validation.Valid
 
 @RestController
+@CrossOrigin(origins = ["*"])
 class EventResources(val eventService: EventService) {
 
     @GetMapping("/cattleTypes")

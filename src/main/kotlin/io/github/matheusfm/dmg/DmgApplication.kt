@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class DmgApiApplication
+class DmgApplication
 
 fun main(args: Array<String>) {
-	runApplication<DmgApiApplication>(*args)
+	runApplication<DmgApplication>(*args)
 }

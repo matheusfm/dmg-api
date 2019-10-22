@@ -51,7 +51,7 @@ class EventService(
         val event = eventRequest.toEvent(eventCattleman, eventSupplier)
 
         val savedEvent = eventRepository.save(event)
-        eventRepository.save(savedEvent.autoEvent())
+        savedEvent.autoEvent()?.let { autoEvent -> eventRepository.save(autoEvent) }
         return savedEvent.id ?: throw RuntimeException("Error saving event")
     }
 
