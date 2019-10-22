@@ -8,3 +8,4 @@ deploy:
   provider: heroku
   api_key: $HEROKU_APIKEY
   app: dmg-api
+  skip_cleanup: true
