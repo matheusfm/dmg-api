@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RestResource
 interface CattlemanRepository : PagingAndSortingRepository<Cattleman, String> {
 
     @RestResource(path = "text", rel = "text")
-    @Query("{ \$or: [ { 'name' : { \$regex: '.*?0.*', \$options: 'i' } }, { 'document' : { \$regex: '.*?0.*' } } ] }")
+    @Query("{ \$or: [ { 'name' : { \$regex: '.*?0.*', \$options: 'i' } }, { 'document' : { \$regex: '.*?0.*' } }, { 'code' : { \$regex: '.*?0.*' } } ] }")
     fun findByText(text: String?, pageable: Pageable): Page<Cattleman>
 
 }

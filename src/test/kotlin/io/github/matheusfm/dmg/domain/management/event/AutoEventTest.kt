@@ -11,7 +11,7 @@ class AutoEventTest {
             id = "eventId",
             eventType = EventType.DISCRIMINATION_IN,
             cattle = listOf(Event.Cattle(CattleType.BOI, 2)),
-            cattleman = Event.Cattleman(UUID.randomUUID().toString(), "Pecuarista", "Documento")
+            cattleman = Event.Cattleman(UUID.randomUUID().toString(), "Code", "Pecuarista", "Documento")
         )
 
         val autoEvent = event.autoEvent()
@@ -31,7 +31,7 @@ class AutoEventTest {
             id = "eventId",
             eventType = EventType.DISCRIMINATION_OUT,
             cattle = listOf(Event.Cattle(CattleType.NOV, 4)),
-            cattleman = Event.Cattleman(UUID.randomUUID().toString(), "Pecuarista", "Documento")
+            cattleman = Event.Cattleman(UUID.randomUUID().toString(), "Code", "Pecuarista", "Documento")
         )
 
         val autoEvent = event.autoEvent()
@@ -50,7 +50,7 @@ class AutoEventTest {
         val event = Event(
             eventType = EventType.OUT,
             cattle = listOf(Event.Cattle(CattleType.VAC, 7)),
-            cattleman = Event.Cattleman(UUID.randomUUID().toString(), "Pecuarista", "Documento")
+            cattleman = Event.Cattleman(UUID.randomUUID().toString(), "Code", "Pecuarista", "Documento")
         )
 
         assertNull(event.autoEvent())

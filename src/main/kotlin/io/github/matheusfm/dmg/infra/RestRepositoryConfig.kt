@@ -13,6 +13,7 @@ import org.springframework.validation.Validator
 class RestRepositoryConfig(val validator: Validator) : RepositoryRestConfigurer {
     override fun configureRepositoryRestConfiguration(config: RepositoryRestConfiguration?) {
         config?.corsRegistry?.addMapping("/**")
+            ?.allowedMethods("GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "TRACE")
         config?.exposeIdsFor(Supplier::class.java, Cattleman::class.java, Event::class.java)
         config?.exposureConfiguration?.forDomainType(Event::class.java)
     }

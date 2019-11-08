@@ -32,7 +32,7 @@ class EventService(
         log.info("Finding cattleman by id {}", eventRequest.cattlemanId)
         val eventCattleman = (eventRequest.cattlemanId?.let(cattlemanRepository::findByIdOrNull)
             ?: throw CattlemanNotFoundException(eventRequest.cattlemanId!!)).let {
-            Event.Cattleman(cattlemanId = it.id!!, name = it.name!!, document = it.document!!)
+            Event.Cattleman(cattlemanId = it.id!!, code = it.code, name = it.name!!, document = it.document!!)
         }
 
         log.info("Finding supplier by id {}", eventRequest.supplierId)
@@ -40,6 +40,7 @@ class EventService(
             eventRequest.supplierId?.takeIf(String::isNotBlank)?.let(supplierRepository::findByIdOrNull)?.let {
                 Event.Supplier(
                     supplierId = it.id!!,
+                    code = it.code,
                     name = it.name!!,
                     document = it.document!!,
                     state = it.state!!,

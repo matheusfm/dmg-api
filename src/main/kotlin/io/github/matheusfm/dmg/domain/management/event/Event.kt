@@ -40,10 +40,11 @@ data class Event(
             ?.let { this.copy(id = null, cattle = autoCattle, eventType = it, originalEventId = id) }
     }
 
-    data class Cattleman(val cattlemanId: String, val name: String, val document: String)
+    data class Cattleman(val cattlemanId: String, val code: String?, val name: String, val document: String)
 
     data class Supplier(
         val supplierId: String,
+        val code: String?,
         val name: String,
         val document: String,
         val stateRegistration: String?,

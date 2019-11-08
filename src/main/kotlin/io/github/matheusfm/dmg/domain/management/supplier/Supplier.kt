@@ -10,6 +10,7 @@ import javax.validation.constraints.Pattern
 @Document(collection = "suppliers")
 data class Supplier(
     @field:Id val id: String?,
+    val code: String?,
     @field:NotBlank val name: String?,
     @field:Pattern(regexp = "(\\d{5}[-]?\\d{3})") val zipCode: String?,
     @field:NotBlank val address: String?,
