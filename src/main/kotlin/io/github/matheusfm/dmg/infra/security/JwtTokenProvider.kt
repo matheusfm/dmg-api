@@ -38,7 +38,7 @@ class JwtTokenProvider {
             .setClaims(claims)
             .setIssuedAt(Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
             .setExpiration(Date.from(expiration.atZone(ZoneId.systemDefault()).toInstant()))
-            .signWith(SignatureAlgorithm.HS256, "c2VjcmV0LWtleQ==")
+            .signWith(SignatureAlgorithm.HS256, secretKey)
             .compact()
     }
 

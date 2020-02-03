@@ -17,7 +17,7 @@ class WebSecurityConfig(private val jwtTokenProvider: JwtTokenProvider, private 
     WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
-        http?.csrf()?.disable()
+        http?.cors()?.and()?.csrf()?.disable()
         http?.sessionManagement()?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         http?.authorizeRequests()
             ?.antMatchers("/auths", "/actuator/**")?.permitAll()
