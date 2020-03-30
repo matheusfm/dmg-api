@@ -15,9 +15,10 @@ class UserResources(private val userService: UserService) {
 
     @PostMapping("/auths")
     @ResponseStatus(HttpStatus.CREATED)
-    fun authentication(@RequestBody body: AuthenticationRequest): Map<String, String> {
+    fun authentication(@RequestBody body: AuthenticationRequest): Map<String, String?> {
         val token = userService.login(body.username, body.password)
-        return mapOf("token" to token)
+        val user = userService.findByUsername(body.username)
+        return mapOf("token" to token, "name" to user?.name)
     }
 
     @GetMapping("/users")
